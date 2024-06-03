@@ -20,7 +20,7 @@ extern "C" const AMX_NATIVE_INFO native_list[] = {
     { "abs", Natives::n_Abs },
     { "isnan", Natives::n_IsNaN },
     { "strcpy", Natives::n_StrCpy },
-    { "CreateNaN", Natives::n_CreateNaN },
+    { "nan", Natives::n_CreateNaN },
     { "isempty", Natives::n_IsStringEmpty },
     { "strcount", Natives::n_StrCount },
     { "isdigits", Natives::n_StringIsDigits },
