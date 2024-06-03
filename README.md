@@ -16,7 +16,7 @@ stock strtolower(const src[], dest[], len = sizeof(src)); // Converts the string
 ```cpp
 native abs(value); // Returns the absolute value of a number
 native isnan(value); // Checks whether a value is NaN (Not-A-Number)
-native CreateNaN(); // Returns a NaN value (Not-A-Number)
+native nan(); // Returns a NaN value (Not-A-Number)
 ```
 
 # Disclaimer
