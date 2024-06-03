@@ -3,7 +3,7 @@ Some useful (or not) string/math functions
 
 # String Functions
 ```cpp
-native strcount(const src[], const word[], bool:casesen); // Counts how many occurrences of a word are in a string
+native strcount(const src[], const word[], bool:casesen = true); // Counts how many occurrences of a word are in a string
 native bool: isempty(const string[]); // Checks whether the string is null/empty
 native bool: isdigits(const string[]); // Checks whether the string contains only numbers/digits
 native bool: isip(const string[]); // Checks whether the string is a valid IP address
