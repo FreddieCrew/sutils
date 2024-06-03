@@ -9,7 +9,7 @@ cell AMX_NATIVE_CALL Natives::n_Abs(AMX* amx, cell* params) {
 
 cell AMX_NATIVE_CALL Natives::n_IsNaN(AMX* amx, cell* params) {
     float value = amx_ctof(params[1]);
-    return static_cast<cell>(std::isnan(value)) ? 1 : 0;
+    return static_cast<cell>(std::isnan(value) ? 1 : 0);
 }
 
 cell AMX_NATIVE_CALL Natives::n_CreateNaN(AMX* amx, cell* params) {
@@ -86,7 +86,7 @@ cell AMX_NATIVE_CALL Natives::n_IsStringIP(AMX* amx, cell* params) {
         return 0;
 
     std::regex regexIP("^\\b(?:\\d{1,3}\\.){3}\\d{1,3}\\b$");
-    return std::regex_match(str, regexIP) ? 1 : 0;
+    return static_cast<cell>(std::regex_match(str, regexIP) ? 1 : 0);
 }
 
 cell AMX_NATIVE_CALL Natives::n_IsStringEmpty(AMX* amx, cell* params) {
@@ -96,7 +96,7 @@ cell AMX_NATIVE_CALL Natives::n_IsStringEmpty(AMX* amx, cell* params) {
     const char* str;
     amx_StrParam(amx, params[1], str);
 
-    return static_cast<cell>((str == nullptr || str[0] == '\0')) ? 1 : 0;
+    return static_cast<cell>((str == nullptr || str[0] == '\0') ? 1 : 0);
 }
 
 cell AMX_NATIVE_CALL Natives::n_StringIsDigits(AMX* amx, cell* params) {
