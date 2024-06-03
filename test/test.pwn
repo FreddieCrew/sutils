@@ -25,7 +25,7 @@ stock NaN() {
 }
 
 stock StrCpy() {
-    new origin[10], destiny[11] = "Hello";
+    new origin[10] = "Hello", destiny[11];
     strcpy(destiny, origin);
     printf("%s", destiny);
 }
