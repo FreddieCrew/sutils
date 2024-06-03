@@ -121,23 +121,10 @@ cell AMX_NATIVE_CALL Natives::n_StringIsDigits(AMX* amx, cell* params) {
 // Default Pawn function that, for some reason, was removed from SA-MP, so why not bring it back?
 // Original source: https://github.com/compuphase/pawn/blob/main/amx/amxstring.c#L276
 cell AMX_NATIVE_CALL Natives::n_StrCpy(AMX* amx, cell* params) {
-    cell* cdest, * csrc;
-    int len, packed;
+    std::string csrc = amx_GetCppString(amx, params[2]);
 
-    amx_GetAddr(amx, params[2], &csrc);
-    amx_GetAddr(amx, params[1], &cdest);
-    amx_StrLen(csrc, &len);
-
-    packed = (ucell)*csrc > UNPACKEDMAX;
-
-
-    if (packed) {
-        if ((unsigned)len > params[3] * sizeof(cell) - 1)
-            len = params[3] * sizeof(cell) - 1;
-    }
-    else {
-        if (len > params[3] - 1) 
-            len = params[3] - 1;
-    }
-    return len;
+    cell* addr = nullptr;
+    amx_GetAddr(amx, params[1], &addr);
+    amx_SetString(addr, csrc.c_str(), 0, 0, csrc.length() + 1);
+    return static_cast<cell>(csrc.size());
 }
