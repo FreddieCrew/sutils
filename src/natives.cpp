@@ -4,12 +4,12 @@ using namespace std;
 
 cell AMX_NATIVE_CALL Natives::n_Abs(AMX* amx, cell* params) {
     int value = params[1];
-    return std::abs(value);
+    return static_cast<cell>(std::abs(value));
 }
 
 cell AMX_NATIVE_CALL Natives::n_IsNaN(AMX* amx, cell* params) {
     float value = amx_ctof(params[1]);
-    return std::isnan(value) ? 1 : 0;
+    return static_cast<cell>(std::isnan(value)) ? 1 : 0;
 }
 
 cell AMX_NATIVE_CALL Natives::n_CreateNaN(AMX* amx, cell* params) {
@@ -53,7 +53,7 @@ cell AMX_NATIVE_CALL Natives::n_StrCount(AMX* amx, cell* params) {
 
     if (str == nullptr || word == nullptr) return 0;
 
-    int count = 0;
+    cell count(0);
     const char* ptr = str;
     while (*ptr != '\0') {
         const char* wordPtr = word;
@@ -96,7 +96,7 @@ cell AMX_NATIVE_CALL Natives::n_IsStringEmpty(AMX* amx, cell* params) {
     const char* str;
     amx_StrParam(amx, params[1], str);
 
-    return (str == nullptr || str[0] == '\0') ? 1 : 0;
+    return static_cast<cell>((str == nullptr || str[0] == '\0')) ? 1 : 0;
 }
 
 cell AMX_NATIVE_CALL Natives::n_StringIsDigits(AMX* amx, cell* params) {
