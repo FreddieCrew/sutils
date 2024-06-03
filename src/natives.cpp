@@ -17,28 +17,6 @@ cell AMX_NATIVE_CALL Natives::n_CreateNaN(AMX* amx, cell* params) {
     return amx_ftoc(nanValue);
 }
 
-cell AMX_NATIVE_CALL Natives::n_StrTrim(AMX* amx, cell* params) {
-    cell* strAddr = (cell*)params[1];
-    int length = params[2];
-
-    char* str = (char*)strAddr;
-
-    while (isspace(*str)) {
-        str++;
-        length--;
-    }
-
-    if (length > 0) {
-        char* end = str + length - 1;
-        while (end > str && isspace(*end)) {
-            end--;
-        }
-        *(end + 1) = '\0';
-    }
-
-    return 1;
-}
-
 cell AMX_NATIVE_CALL Natives::n_StrCount(AMX* amx, cell* params) {
     cell* strAddr;
     amx_GetAddr(amx, params[1], &strAddr);
