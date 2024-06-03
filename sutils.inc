@@ -9,7 +9,7 @@
 native abs(value);
 native isnan(value);
 native strcpy(dest[], const origin[], len = sizeof(dest));
-native CreateNaN();
+native nan();
 native strcount(const src[], const word[], bool:casesen);
 native bool: isempty(const string[]);
 native bool: isdigits(const string[]);
